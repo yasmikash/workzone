@@ -5,7 +5,7 @@ const UserSignUp = () => {
   const { signUp } = useActions();
 
   const onSubmit = (user: any) => {
-    signUp({ ...user, userType: "user" });
+    signUp({ ...user, userType: "user", projectName: null });
   };
 
   return (

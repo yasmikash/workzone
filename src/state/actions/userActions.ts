@@ -1,4 +1,5 @@
 import { ActionType } from "../action-types";
+import { ProjectDeleteAction } from "./projectActions";
 
 interface AdminSignUpAction {
   type: ActionType.ADMIN_SIGN_UP;
@@ -15,6 +16,7 @@ interface UserSignUpAction {
     username: string;
     password: string;
     userType: "user";
+    projectName: string | null;
   };
 }
 
@@ -35,8 +37,24 @@ interface UserDeleteAction {
   };
 }
 
+interface UserAssignToProjectAction {
+  type: ActionType.ASSIGN_TO_PROJECT;
+  payload: {
+    username: string;
+    projectName: string;
+  };
+}
+
+interface UserUnassignFromProject {
+  type: ActionType.UNASSIGN_FROM_PROJECT;
+  payload: string;
+}
+
 export type Action =
   | AdminSignUpAction
   | UserSignUpAction
   | UserEditAction
-  | UserDeleteAction;
+  | UserDeleteAction
+  | UserAssignToProjectAction
+  | UserUnassignFromProject
+  | ProjectDeleteAction;

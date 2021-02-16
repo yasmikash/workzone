@@ -26,7 +26,7 @@ const UserForm: FC<UserFormProps> = ({ onSubmit, formType, user }) => {
           placeholder="Enter Username"
           required
           disabled={formType === "Edit" ? true : false}
-          defaultValue={formType === "Edit" ? user?.username : ""}
+          value={username}
         />
       </div>
       <div className="form-group">
@@ -37,7 +37,7 @@ const UserForm: FC<UserFormProps> = ({ onSubmit, formType, user }) => {
           className="form-control"
           placeholder="Enter Password"
           required
-          defaultValue={formType === "Edit" ? user?.password : ""}
+          value={password}
         />
       </div>
       <button type="submit" className="btn btn-primary">

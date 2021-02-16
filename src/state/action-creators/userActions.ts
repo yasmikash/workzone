@@ -5,6 +5,7 @@ export const signUp = (user: {
   username: string;
   password: string;
   userType: string;
+  projectName: string | null;
 }) => {
   switch (user.userType) {
     case "user":
@@ -57,4 +58,21 @@ export const deleteUser = (user: { username: string; userType: string }) => {
         payload: user,
       };
   }
+};
+
+export const assignToProject = (data: {
+  username: string;
+  projectName: string;
+}) => {
+  return {
+    type: ActionType.ASSIGN_TO_PROJECT,
+    payload: data,
+  };
+};
+
+export const unnasignFromProject = (username: string) => {
+  return {
+    type: ActionType.UNASSIGN_FROM_PROJECT,
+    payload: username,
+  };
 };

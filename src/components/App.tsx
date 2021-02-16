@@ -13,6 +13,11 @@ import AdminProfile from "./user/AdminProfile";
 import EditUser from "./user/EditUser";
 import EditAdmin from "./user/EditAdmin";
 
+import AddProject from "./project/AddProject";
+import ProjectList from "./project/ProjectList";
+import EditProject from "./project/EditProject";
+import Project from "./project/Project";
+
 class App extends Component {
   render() {
     return (
@@ -36,6 +41,10 @@ class App extends Component {
             <Route path="/admin/edit/:username" component={EditAdmin} />
             <Route path="/user/:username" component={UserProfile} />
             <Route path="/admin/:username" component={AdminProfile} />
+            <Route path="/projects/add" component={AddProject} />
+            <Route path="/projects/:name" component={Project} exact />
+            <Route path="/projects" component={ProjectList} exact />
+            <Route path="/projects/edit/:name" component={EditProject} />
           </Switch>
         </Router>
       </div>
