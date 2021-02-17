@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 import { ActionType } from "../action-types";
 import { Action } from "../actions/projectActions";
 
@@ -13,11 +11,16 @@ const reducer = (state: ProjectState = [], action: Action) => {
   switch (action.type) {
     case ActionType.ADD_PROJECT:
       return [...state, action.payload];
+
     case ActionType.EDIT_PROJECT:
-      projects = [...state];
-      let index = _.findIndex(state, { name: action.payload.name });
-      projects.splice(index, 1, action.payload);
+      projects = state.map((project) => {
+        if (project.name === action.payload.name) {
+          return { ...project, ...action.payload };
+        }
+        return { ...project };
+      });
       return projects;
+
     case ActionType.DELET_PROJECT:
       return state.filter((project) => project.name !== action.payload.name);
     default:

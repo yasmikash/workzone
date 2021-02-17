@@ -28,6 +28,7 @@ const ProjectForm: FC<ProjectFormProps> = ({ onSubmit, project, formType }) => {
           placeholder="Enter Project Name"
           value={name}
           required
+          disabled={formType === "Edit" ? true : false}
         />
       </div>
       <div className="form-group">
